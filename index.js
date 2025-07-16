@@ -9,7 +9,13 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 8000;
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://smart-resume-analyzer-iota.vercel.app',
+  methods: ['POST'],
+  allowedHeaders: ['Content-Type']
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 const upload = multer({ dest: 'uploads/' });
